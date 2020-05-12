@@ -1,0 +1,13 @@
+import React from "react"
+import "./loader.sass"
+import { ReactComponent as LoaderIcon } from "assets/icons/loader.svg"
+
+const Loader = () => {
+	return (
+		<div className="loader">
+			<LoaderIcon />
+		</div>
+	)
+}
+
+export default Loader

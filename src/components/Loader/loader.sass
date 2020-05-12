@@ -1,0 +1,21 @@
+@import 'src/assets/sass/helpers/_variables'
+@import 'src/assets/sass/helpers/_mixins'
+
+.loader
+
+	width: 18px
+	height: 18px
+	pointer-events: none
+	position: relative
+	svg
+		fill: $accent
+		+cover
+		animation: spin .58s linear infinite reverse
+	+tr
+	&.active
+		opacity: 1
+
++keyframes(spin)
+  0%
+  100%
+    +rotate(360)

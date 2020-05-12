@@ -1,0 +1,73 @@
+.dropdown
+    position: relative
+    display: flex
+    width: 100%
+    &__input
+        width: 100%
+        display: flex
+        align-items: center
+        border: 1px solid #CBCBCB
+        border-radius: 4px
+        height: 46px
+        padding: 0 40px 0 20px
+        overflow: hidden
+        +tr
+        +h
+            border-color: $accent
+            cursor: pointer
+        +after
+            position: absolute
+            top: 20px
+            right: 20px
+
+            +triangle(10,6, $black, b)
+            +tr
+        &--open
+            border-color: $accent
+            +after
+                +rotate(180)
+
+    &__input-value
+        font-size: 18px
+        font-weight: 500
+        user-select: none
+        +textOverflow
+
+    &__menu
+        flex-direction: column
+        position: absolute
+        height: auto
+        max-height: 0
+        overflow-y: auto
+        left: 0px
+        right: 0px
+        top: 100%
+        background: #FFFFFF
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16)
+        border-radius: 4px
+        z-index: 10
+        +tr
+
+        &--open
+            max-height: calc(38px * 3)
+            display: flex
+
+    &__menuItem
+        display: flex
+        align-items: center
+        font-weight: 500
+        font-size: 18px
+        line-height: 38px
+        min-height: 38px
+        padding: 0 20px
+        +textOverflow
+        +h
+            cursor: pointer
+            background-color: #F4F4F4
+        &--active
+            pointer-events: none
+            background-color: #F4F4F4
+            +h
+                cursor: default
+
+

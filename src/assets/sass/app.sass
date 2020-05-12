@@ -1,0 +1,26 @@
+@import "base/_reset"
+
+@import "helpers/_variables"
+@import "helpers/_mixins"
+@import "helpers/mixins/_triangle"
+
+
+@import "~bootstrap/scss/_functions"
+@import "~bootstrap/scss/_variables"
+
+
+$theme-colors: ( "primary": $accent, "sooqa": transparent  )
+
+@import "~bootstrap/scss/bootstrap"
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap')
+
+@import "base/_exchanger"
+@import "components/_button"
+@import "components/_dropdown"
+
+body
+	+smooth-font
+	color: $black
+	font-family: 'Roboto', sans-serif
+	font-style: normal
