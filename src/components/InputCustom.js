@@ -1,13 +1,12 @@
-import Loader from "components/Loader/Loader"
+import Loader from "components/Loader"
 import debounce from "lodash/debounce"
 import React, { useCallback, useEffect, useState } from "react"
-import "./inputcustom.sass"
 import classNames from "classnames"
 
-const InputCustom = (props) => {
+const Input = (props) => {
 	const { type, placeholder, value, handleInputChange, loading } = props
 
-	const [inputVal, setInputVal] = useState(value)
+	const [currentInputVal, setCurrentInputVal] = useState(value)
 
 	const [error, setError] = useState(false)
 
@@ -30,7 +29,7 @@ const InputCustom = (props) => {
 
 		const onlyPositiveNumberOrFloatRegExp = /^(?:[1-9]\d*|0)?(?:\.\d+)?$/
 
-		setInputVal(inputValue)
+		setCurrentInputVal(inputValue)
 		if (inputValue === "") {
 			setError("enter correct value, pls")
 		} else if (inputValue > 1000000) {
@@ -46,21 +45,21 @@ const InputCustom = (props) => {
 	}
 
 	useEffect(() => {
-		setInputVal(value)
+		setCurrentInputVal(value)
 	}, [value])
 
 	return (
-		<div className="inputcustom">
-			{error && <div className="inputcustom__error-message">{error}</div>}
+		<div className="input">
+			{error && <div className="input__error-message">{error}</div>}
 			<input
 				type="number"
-				className={classNames("inputcustom__input", {
+				className={classNames("input__field", {
 					error: error !== false,
 				})}
 				placeholder={placeholder}
 				name={type}
 				id={type}
-				value={inputVal}
+				value={currentInputVal}
 				onChange={inputHandler}
 			/>
 			{loading && <Loader />}
@@ -68,4 +67,4 @@ const InputCustom = (props) => {
 	)
 }
 
-export default InputCustom
+export default Input

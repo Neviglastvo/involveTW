@@ -54,9 +54,6 @@ function handleDropdownChangeValue(type, value) {
 }
 
 function getValueFromApi(dispatch, type, value, invoiceId, withdrawId) {
-	// console.log("value :>> ", value)
-	// console.log("invoiceId :>> ", invoiceId)
-	// console.log("withdrawId :>> ", withdrawId)
 	if (!value) {
 		dispatch({
 			type: exchangerConstants.SET_PAYMENT_INFO_ERROR,

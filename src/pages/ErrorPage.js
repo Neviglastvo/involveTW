@@ -3,9 +3,8 @@ import React from "react"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { exchangerActions } from "redux/actions"
-import "./errorpage.sass"
 
-const ErrorPage = () => {
+export const ErrorPage = () => {
 	const dispatch = useDispatch()
 	let history = useHistory()
 
@@ -32,5 +31,3 @@ const ErrorPage = () => {
 		</div>
 	)
 }
-
-export default ErrorPage

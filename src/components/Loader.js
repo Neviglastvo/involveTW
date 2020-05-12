@@ -1,5 +1,4 @@
 import React from "react"
-import "./loader.sass"
 import { ReactComponent as LoaderIcon } from "assets/icons/loader.svg"
 
 const Loader = () => {

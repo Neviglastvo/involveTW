@@ -5,22 +5,16 @@
 @import "helpers/mixins/_triangle"
 @import "helpers/mixins/_customScroll"
 
-
-@import "~bootstrap/scss/_functions"
-@import "~bootstrap/scss/_variables"
-
-
-$theme-colors: ( "primary": $accent, "sooqa": transparent  )
-
-@import "~bootstrap/scss/bootstrap"
-
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap')
 
+@import "base/_layout"
 @import "base/_exchanger"
 @import "components/_button"
 @import "components/_dropdown"
+@import "components/_input"
+@import "components/_loader"
 
-body
+*
 	+smooth-font
 	color: $black
 	font-family: 'Roboto', sans-serif

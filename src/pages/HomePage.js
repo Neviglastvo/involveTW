@@ -1,15 +1,14 @@
 import classNames from "classnames"
-import DropdownCustom from "components/DropdownCustom/DropdownCustom"
-import InputCustom from "components/InputCustom/InputCustom"
-import Loader from "components/Loader/Loader"
+import DropdownCustom from "components/DropdownCustom"
+import InputCustom from "components/InputCustom"
+import Loader from "components/Loader"
 import { history } from "helpers/history"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { exchangerActions, payMethodsActions } from "redux/actions/index"
-import "./homepage.sass"
 
-const HomePage = () => {
+export const HomePage = () => {
 	const dispatch = useDispatch()
 
 	const payMethod = useSelector((state) => state.payMethod)
@@ -140,5 +139,3 @@ const HomePage = () => {
 		</div>
 	)
 }
-
-export default HomePage

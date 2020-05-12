@@ -1,12 +1,11 @@
 import classNames from "classnames"
-import Loader from "components/Loader/Loader"
+import Loader from "components/Loader"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
 import { exchangerActions } from "redux/actions"
-import "./detailspage.sass"
 
-const DetailsPage = ({ location }) => {
+export const DetailsPage = ({ location }) => {
 	console.log("location", location)
 
 	let history = useHistory()
@@ -28,6 +27,10 @@ const DetailsPage = ({ location }) => {
 	const confirmActionHandler = () => {
 		dispatch(exchangerActions.exchangeValues())
 	}
+
+	useEffect(() => {
+		!exchangerAllowedToExchange && history.push("/")
+	}, [exchangerAllowedToExchange, history])
 
 	useEffect(() => {
 		console.log("exchangerSuccess :>> ", exchangerSuccess)
@@ -79,5 +82,3 @@ const DetailsPage = ({ location }) => {
 		</div>
 	)
 }
-
-export default DetailsPage

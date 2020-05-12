@@ -1,7 +1,6 @@
 import classNames from "classnames"
 import useOutsideClick from "hooks/useOutsideClick"
 import React, { useRef, useState } from "react"
-import "./dropdowncustom.sass"
 
 const DropdownCustom = ({
 	items,

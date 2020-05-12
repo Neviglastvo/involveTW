@@ -11,10 +11,7 @@ function getAllPayMethods() {
 
 		api.get("/payMethods").then(
 			(res) => {
-				// setTimeout(() => {
 				dispatch(success(res.data))
-				// throw new Error("NOT!")
-				// }, 500)
 			},
 			(err) => dispatch(failure(err)),
 		)

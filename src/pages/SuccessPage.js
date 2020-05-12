@@ -3,9 +3,8 @@ import React from "react"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { exchangerActions } from "redux/actions/index"
-import "./successpage.sass"
 
-const SuccessPage = () => {
+export const SuccessPage = () => {
 	const dispatch = useDispatch()
 	let history = useHistory()
 
@@ -31,5 +30,3 @@ const SuccessPage = () => {
 		</div>
 	)
 }
-
-export default SuccessPage

@@ -1,13 +1,10 @@
 // import "bootstrap/dist/css/bootstrap.min.css"
 import "assets/sass/app.sass"
+import Layout from "layouts/Layout"
+import { DetailsPage, ErrorPage, HomePage, SuccessPage } from "pages/index"
 import React from "react"
 import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom"
 import { PublicRoute } from "router"
-import HomePage from "pages/HomePage/HomePage"
-import Layout from "layouts/Layout"
-import DetailsPage from "pages/DetailsPage/DetailsPage"
-import SuccessPage from "pages/SuccessPage/SuccessPage"
-import ErrorPage from "pages/ErrorPage/ErrorPage"
 
 function App() {
 	return (
