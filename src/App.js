@@ -7,6 +7,7 @@ import HomePage from "pages/HomePage/HomePage"
 import Layout from "layouts/Layout"
 import DetailsPage from "pages/DetailsPage/DetailsPage"
 import SuccessPage from "pages/SuccessPage/SuccessPage"
+import ErrorPage from "pages/ErrorPage/ErrorPage"
 
 function App() {
 	return (
@@ -15,7 +16,7 @@ function App() {
 				<PublicRoute path="/" exact component={HomePage} layout={Layout} />
 				<PublicRoute path="/details" component={DetailsPage} layout={Layout} />
 				<PublicRoute path="/success" component={SuccessPage} layout={Layout} />
-				<PublicRoute path="/error" component={SuccessPage} layout={Layout} />
+				<PublicRoute path="/error" component={ErrorPage} layout={Layout} />
 				<Redirect to="/" />
 			</Switch>
 		</Router>

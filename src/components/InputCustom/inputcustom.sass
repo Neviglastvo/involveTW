@@ -14,7 +14,10 @@
 		font-size: 16px
 		line-height: 46px
 		+tr
+		+h
+			border-color: $accent
 		&:focus
+			border-color: $accent
 			+ .loader
 				display: none
 		&[type='Number']::-webkit-outer-spin-button,
@@ -26,7 +29,10 @@
 			margin: 0
 			-moz-appearance: textfield
 
-	&__error
+		&.error
+			border-color: desaturate(red, 50%)
+
+	&__error-message
 		position: absolute
 		top: calc(100% + 2px)
 		color: red

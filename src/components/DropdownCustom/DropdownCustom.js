@@ -48,13 +48,7 @@ const DropdownCustom = ({
 									})}
 									key={index}
 									onClick={() => {
-										if (currentValue === item.name) {
-											// setOpen(true)
-											return
-										}
-
 										handleDropdownValueChange(item)
-										// handleDropdownToggle()
 									}}
 								>
 									{item.name}

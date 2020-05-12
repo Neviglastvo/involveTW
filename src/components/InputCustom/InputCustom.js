@@ -2,6 +2,7 @@ import Loader from "components/Loader/Loader"
 import debounce from "lodash/debounce"
 import React, { useCallback, useEffect, useState } from "react"
 import "./inputcustom.sass"
+import classNames from "classnames"
 
 const InputCustom = (props) => {
 	const { type, placeholder, value, handleInputChange, loading } = props
@@ -25,20 +26,20 @@ const InputCustom = (props) => {
 	const debouncedFunction = useDebouncedCallback(handleInputValueChange, 1000)
 
 	const inputHandler = (e) => {
-		const value = e.target.value
+		const inputValue = e.target.value
 
 		const onlyPositiveNumberOrFloatRegExp = /^(?:[1-9]\d*|0)?(?:\.\d+)?$/
 
-		setInputVal(value)
-		if (value === "") {
-			setError("cannot be empty, enter correct value, pls")
-		} else if (value > 10000) {
-			setError("you can`t be so rich, calm down")
-		} else if (value == 0) {
+		setInputVal(inputValue)
+		if (inputValue === "") {
+			setError("enter correct value, pls")
+		} else if (inputValue > 1000000) {
+			setError("you can`t be so rich, calm down, 1kk is enough")
+		} else if (inputValue == 0) {
 			setError("come on, you can`t sell 0 money")
-		} else if (onlyPositiveNumberOrFloatRegExp.test(value)) {
+		} else if (onlyPositiveNumberOrFloatRegExp.test(inputValue)) {
 			setError(false)
-			debouncedFunction(value)
+			debouncedFunction(inputValue)
 		} else {
 			setError("enter correct value, pls")
 		}
@@ -50,10 +51,12 @@ const InputCustom = (props) => {
 
 	return (
 		<div className="inputcustom">
-			{error && <div className="inputcustom__error">{error}</div>}
+			{error && <div className="inputcustom__error-message">{error}</div>}
 			<input
 				type="number"
-				className="inputcustom__input"
+				className={classNames("inputcustom__input", {
+					error: error !== false,
+				})}
 				placeholder={placeholder}
 				name={type}
 				id={type}

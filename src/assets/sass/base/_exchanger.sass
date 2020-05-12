@@ -6,6 +6,7 @@
     width: 100%
     max-width: 754px
     min-height: 320px
+    max-height: 100vh
     background: #FFFFFF
     box-shadow: 0px 8px 28px rgba(0, 0, 0, 0.08)
     border-radius: 8px
@@ -51,8 +52,6 @@
         font-weight: 400
         color: $black
 
-
-
     &__col
         width: 100%
         padding: 0 32px
@@ -64,6 +63,12 @@
                 width: 100%
                 padding: 15px 20px
 
+
+    &__helper
+        margin-top: 20px
+        font-size: 14px
+
+        color: desaturate(red, 50%)
 
     &__title
         font-size: 48px
@@ -95,6 +100,9 @@
         margin-bottom: 34px
         svg
             fill: $accent
+        &--error
+            svg
+                fill: desaturate(red,50%)
 
     &__actions
         width: 100%

@@ -24,6 +24,7 @@ export function exchanger(state = initialState, action) {
 		case exchangerConstants.SET_PAYMENT_INFO_ALLOWED:
 			return {
 				...state,
+				error: null,
 				allowedToExchange: true,
 			}
 

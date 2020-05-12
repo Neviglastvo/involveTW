@@ -25,6 +25,7 @@
         &--open
             border-color: $accent
             +after
+                +triangle(10,6, $accent, b)
                 +rotate(180)
 
     &__input-value
@@ -39,6 +40,7 @@
         height: auto
         max-height: 0
         overflow-y: auto
+        overflow-x: hidden
         left: 0px
         right: 0px
         top: 100%
@@ -47,9 +49,10 @@
         border-radius: 4px
         z-index: 10
         +tr
+        +customScroll(8px, 4px, $accent, rgba($accent, 0.2))
 
         &--open
-            max-height: calc(38px * 3)
+            max-height: calc(38px * 4)
             display: flex
 
     &__menuItem
@@ -66,7 +69,7 @@
             background-color: #F4F4F4
         &--active
             pointer-events: none
-            background-color: #F4F4F4
+            background-color: rgba($accent, 0.25 )
             +h
                 cursor: default
 

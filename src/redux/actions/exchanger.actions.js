@@ -45,22 +45,22 @@ function handleDropdownChangeValue(type, value) {
 				type: exchangerConstants.SET_PAYMENT_INFO,
 				payload: { type, ...value },
 			})
-			dispatch({
-				type: exchangerConstants.SET_PAYMENT_INFO_ERROR,
-				payload: { error: "can`t perform exchange without values" },
-			})
+			// dispatch({
+			// 	type: exchangerConstants.SET_PAYMENT_INFO_ERROR,
+			// 	payload: { error: "provide at least one value" },
+			// })
 		}
 	}
 }
 
 function getValueFromApi(dispatch, type, value, invoiceId, withdrawId) {
-	console.log("value :>> ", value)
-	console.log("invoiceId :>> ", invoiceId)
-	console.log("withdrawId :>> ", withdrawId)
+	// console.log("value :>> ", value)
+	// console.log("invoiceId :>> ", invoiceId)
+	// console.log("withdrawId :>> ", withdrawId)
 	if (!value) {
 		dispatch({
 			type: exchangerConstants.SET_PAYMENT_INFO_ERROR,
-			payload: { error: "can`t perform exchange without values" },
+			payload: { error: "provide at least one value" },
 		})
 		return
 	}
@@ -68,7 +68,7 @@ function getValueFromApi(dispatch, type, value, invoiceId, withdrawId) {
 	if (!invoiceId) {
 		dispatch({
 			type: exchangerConstants.SET_PAYMENT_INFO_ERROR,
-			payload: { error: "can`t perform exchange without sell field picked" },
+			payload: { error: "pick sell field, pls" },
 		})
 		return
 	}
@@ -76,7 +76,7 @@ function getValueFromApi(dispatch, type, value, invoiceId, withdrawId) {
 	if (!withdrawId) {
 		dispatch({
 			type: exchangerConstants.SET_PAYMENT_INFO_ERROR,
-			payload: { error: "can`t perform exchange without buy field picked" },
+			payload: { error: "pick buy field, pls" },
 		})
 		return
 	}
@@ -125,15 +125,11 @@ function exchangeValues() {
 				invoicePayMethod: invoiceId,
 				withdrawPayMethod: withdrawId,
 			})
-			.then(
-				(res) => {
-					setTimeout(() => {
-						dispatch(success(res.data))
-						// throw new Error("NOT!")
-					}, 500)
-				},
-				(err) => dispatch(failure(err)),
-			)
+			.then((res) => {
+				// throw new Error("") //test purposes
+				dispatch(success(res.data))
+			})
+			.catch((err) => dispatch(failure(err)))
 	}
 
 	function request() {

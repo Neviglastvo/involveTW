@@ -24,9 +24,11 @@ const HomePage = () => {
 
 	const exchangerInvoiceName = exchanger.invoice.name || "Sell this"
 	const exchangerInvoiceValue = exchanger.invoice.value
+	const exchangerInvoiceId = exchanger.invoice.id
 
 	const exchangerWidthdrawName = exchanger.withdraw.name || "Buy this"
 	const exchangerWidthdrawValue = exchanger.withdraw.value
+	const exchangerWidthdrawId = exchanger.withdraw.id
 
 	const handleInputChange = (type, value) => {
 		dispatch(exchangerActions.handleInputChangeValue(type, { value: value }))
@@ -42,22 +44,34 @@ const HomePage = () => {
 		}
 	}, [dispatch, payMethods])
 
-	// useEffect(() => {
-	// 	if (payMethods) {
-	// 		dispatch(
-	// 			exchangerActions.handleDropdownChangeValue(
-	// 				"invoice",
-	// 				payMethods.invoice[0],
-	// 			),
-	// 		)
-	// 		dispatch(
-	// 			exchangerActions.handleDropdownChangeValue(
-	// 				"withdraw",
-	// 				payMethods.withdraw[1],
-	// 			),
-	// 		)
-	// 	}
-	// }, [dispatch, payMethods])
+	useEffect(() => {
+		if (payMethods) {
+			if (!exchangerInvoiceId) {
+				dispatch(
+					exchangerActions.handleDropdownChangeValue(
+						"invoice",
+						payMethods.invoice[0],
+					),
+				)
+			}
+
+			if (!exchangerWidthdrawId) {
+				dispatch(
+					exchangerActions.handleDropdownChangeValue(
+						"withdraw",
+						payMethods.withdraw[1],
+					),
+				)
+			}
+		}
+	}, [
+		dispatch,
+		exchangerInvoiceId,
+		exchangerInvoiceName,
+		exchangerWidthdrawId,
+		exchangerWidthdrawName,
+		payMethods,
+	])
 
 	if (payMethodError && exchangerError) {
 		history.push("/error")
@@ -85,6 +99,7 @@ const HomePage = () => {
 						value={exchangerInvoiceValue}
 						handleInputChange={handleInputChange}
 						loading={exchangerLoading}
+						placeholder={`Sell some ${exchangerInvoiceName}`}
 					/>
 				</div>
 			</div>
@@ -104,9 +119,11 @@ const HomePage = () => {
 						value={exchangerWidthdrawValue}
 						handleInputChange={handleInputChange}
 						loading={exchangerLoading}
+						placeholder={`Buy some ${exchangerWidthdrawName}`}
 					/>
 				</div>
 			</div>
+			{exchangerError && <div className="exchanger__helper">{exchangerError}</div>}
 			<div className="exchanger__actions">
 				<Link
 					className={classNames("exchanger__action button", {
@@ -115,15 +132,9 @@ const HomePage = () => {
 					})}
 					to={{
 						pathname: "/details",
-						// state: {
-						// 	dropdown: dropdownValue,
-						// 	invoice: { value: valueInvoice },
-						// 	withdraw: { value: valueWithdraw },
-						// },
 					}}
 				>
 					{payMethodLoading ? <Loader /> : "Exchange"}
-					{/* {payMethodLoading ? <Loader /> : <Loader />} */}
 				</Link>
 			</div>
 		</div>
